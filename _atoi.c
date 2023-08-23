@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * interactive
- * @inf: struct address
+ * interact - returns true if shell  interactive 
+ * @info: struct address
  *
- * Return: 1 if interactive  0 otherwise
+ * Return: 1 if interactive , 0 otherwise
  */
-int interactive(info_t *inf)
+int interactive(info_t *info)
 {
-	return (isatty(STDIN_FILENO) && inf->readfd <= 2);
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
@@ -40,35 +40,35 @@ int _isalpha(int c)
 }
 
 /**
- * _atoi - converts a String to an Integer
- * @ss: the String to be converted
- * Return: 0 if no Numbers in String, Converted Number otherwise
+ * _atoi - converts a String to an integer
+ * @s: the String to be converted
+ * Return: 0 if no numbers in String, converted number otherwise
  */
 
 int _atoi(char *s)
 {
 	int i, sign = 1, flag = 0, output;
-	unsigned int rslt = 0;
+	unsigned int result = 0;
 
-	for (i = 0; ss[i] != '\0' && flag != 2; i++)
+	for (i = 0; s[i] != '\0' && flag != 2; i++)
 	{
-		if (ss[i] == '-')
+		if (s[i] == '-')
 			sign *= -1;
 
-		if (ss[i] >= '0' && ss[i] <= '9')
+		if (s[i] >= '0' && s[i] <= '9')
 		{
 			flag = 1;
-			rslt *= 10;
-			rslt += (ss[i] - '0');
+			result *= 10;
+			result += (s[i] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
 	}
 
 	if (sign == -1)
-		output = -rslt;
+		output = -result;
 	else
-		output = rslt;
+		output = result;
 
 	return (output);
 }
