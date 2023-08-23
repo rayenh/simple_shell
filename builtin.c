@@ -1,19 +1,20 @@
 #include "shell.h"
+
 /**
  * _myexit - exits the shell
- * @inf:  containing  arguments. Used to maintain
- * constant function prototype.
+ * @inf: containing arguments. Used to maintain
+ * constant Function prototype.
  * Return: exits with a given exit status
  * (0) if inf.argv[0] != "exit"
  */
 int _myexit(info_t *inf)
 {
-	int exitchecks;
+	int exitcheck;
 
 	if (inf->argv[1]) /* If there is an exit arguement */
 	{
-		exitchecks = _erratoi(inf->argv[1]);
-		if (exitchecks == -1)
+		exitcheck = _erratoi(inf->argv[1]);
+		if (exitcheck == -1)
 		{
 			inf->status = 2;
 			print_error(inf, "Illegal number: ");
@@ -27,10 +28,11 @@ int _myexit(info_t *inf)
 	inf->err_num = -1;
 	return (-2);
 }
+
 /**
- * _mycd - changes the current directory of the process
- * @inf:  containing arguments. Used to maintain
- * constant function prototype.
+ * _mycd - Changes the current directory of the Process
+ * @inf: containing arguments. Used to maintain
+ * constant Function prototype.
  * Return: Always 0
  */
 int _mycd(info_t *inf)
@@ -76,10 +78,11 @@ int _mycd(info_t *inf)
 	}
 	return (0);
 }
+
 /**
- * _myhelp - changes the current directory of the process
+ * _myhelp - Changes the current directory of the Process
  * @inf: containing arguments. Used to maintain
- * constant function prototype.
+ * constant Function prototype.
  * Return: Always 0
  */
 int _myhelp(info_t *inf)
@@ -92,4 +95,3 @@ int _myhelp(info_t *inf)
 		_puts(*arg_array); /* temp att_unused workaround */
 	return (0);
 }
-
